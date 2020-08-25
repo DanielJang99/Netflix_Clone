@@ -1,0 +1,17 @@
+.grid {
+    display: grid;
+    grid-template-columns: repeat(4, 0.4fr);
+    grid-gap: 15px;
+    margin-top: 70px;
+}
+
+.poster {
+    width: 100%;
+    object-fit: contain;
+    transition: transform 400ms;
+    cursor: pointer;
+}
+
+.poster:hover {
+    transform: scale(1.1);
+}

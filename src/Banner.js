@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "./axios";
 import requests from "./requests";
 import "./Banner.scss";
+
 // import { url } from "inspector";
 
 function Banner() {
@@ -16,8 +17,6 @@ function Banner() {
         }
         fetchData();
     }, []);
-
-    console.log(movie);
 
     return (
         <header

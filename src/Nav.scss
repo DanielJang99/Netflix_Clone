@@ -3,11 +3,12 @@ $netflix_background: #111;
 .nav {
     position: fixed;
     top: 0;
-    display: flex;
-    /* justify-content: space-between; */
+    display: inline-flex;
+    justify-content: space-between;
     width: 100%;
-    padding: 20px;
-    height: 30px;
+    padding-right: 500px;
+    padding-top: 30px;
+    height: 40px;
     z-index: 1;
     transition: all 0.3s;
     transition-timing-function: ease-in;
@@ -17,12 +18,17 @@ $netflix_background: #111;
         width: 95px;
         object-fit: contain;
         position: fixed;
+        padding-left: 30px;
+        // margin-right: 300px;
     }
     .icon {
-        width: 40px;
-        object-fit: contain;
-        right: 20px;
         position: fixed;
+    }
+
+    .icon:hover {
+        cursor: pointer;
+        transform: scale(1.2);
+        transition: transform 200ms;
     }
 }
 
