@@ -1,22 +1,13 @@
 import React, { useState, useEffect } from "react";
-import axios from "./axios";
-import requests from "./requests";
 import "./Banner.scss";
 
-// import { url } from "inspector";
-
-function Banner() {
+function Banner({ data }) {
     const imageURL = "https://image.tmdb.org/t/p/original";
     const [movie, setMovie] = useState([]);
 
     useEffect(() => {
-        async function fetchData() {
-            const request = await axios.get(requests.fetchNetflixOriginals);
-            setMovie(request.data.results[0]);
-            return request;
-        }
-        fetchData();
-    }, []);
+        setMovie(data.data.results[0]);
+    }, [data]);
 
     return (
         <header

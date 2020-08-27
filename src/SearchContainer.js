@@ -1,8 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-// import SearchRow from "./SearchRow";
 import { useHistory } from "react-router-dom";
-
-// const API_KEY = "47223dc77b02e3169fa9047461b75c36";
 
 function SearchContainer() {
     const [query, setQuery] = useState("");

@@ -8,6 +8,8 @@ function Search({ location }) {
         ignoreQueryPrefix: true
     }).query;
 
+    console.log("loaded search");
+
     const searchRequest = `/search/movie?api_key=47223dc77b02e3169fa9047461b75c36&query=${SearchQuery}`;
 
     return (

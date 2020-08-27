@@ -1,25 +1,41 @@
 import React from "react";
-import Row from "./Row";
+import RowContainer from "./RowContainer";
 import requests from "./requests";
-import Banner from "./Banner";
 import Nav from "./Nav";
+import BannerContainer from "./BannerContainer";
 import "./App.scss";
 
 function Home() {
     return (
         <div className="app">
             <Nav showIcon={true} />
-            <Banner />
-            <Row
+            <BannerContainer />
+            <RowContainer
                 title="Netflix Originals"
                 url={requests.fetchNetflixOriginals}
                 isLarge
+                type="NORIGINALS"
             />
-            <Row title="Trending Now" url={requests.fetchTrending} />
-            <Row title="Top Rated" url={requests.fetchTopRated} />
-            <Row title="Comedy" url={requests.fetchComedy} />
-            <Row title="Adventure" url={requests.fetchAdventure} />
-            {/* <Row title="Documentary" url={requests.fetchDocumentary} /> */}
+            <RowContainer
+                title="Trending Now"
+                url={requests.fetchTrending}
+                type="TRENDING"
+            />
+            <RowContainer
+                title="Top Rated"
+                url={requests.fetchTopRated}
+                type="TOPRATED"
+            />
+            <RowContainer
+                title="Comedy"
+                url={requests.fetchComedy}
+                type="COMEDY"
+            />
+            <RowContainer
+                title="Adventure"
+                url={requests.fetchAdventure}
+                type="ADVENTURE"
+            />
         </div>
     );
 }

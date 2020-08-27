@@ -1,50 +1,44 @@
 import React, { useState, useEffect } from "react";
-import axios from "./axios";
 import "./Row.scss";
-import Youtube from "react-youtube";
-import movieTrailer from "movie-trailer";
+// import Youtube from "react-youtube";
+// import movieTrailer from "movie-trailer";
+// import { LoadMovies } from "./movies";
 
 const imageURL = "https://image.tmdb.org/t/p/original";
 
-function Row({ title, url, isLarge }) {
+function Row({ data, isLarge, title }) {
     const [movies, setMovies] = useState([]);
-    const [trailerUrl, setTrailerUrl] = useState("");
+    // const [trailerUrl, setTrailerUrl] = useState("");
 
     useEffect(() => {
-        async function fetchData() {
-            const request = await axios.get(url);
-            setMovies(request.data.results);
-            return request;
-        }
-        fetchData();
-    }, [url]);
-    // console.log(movies);
+        setMovies(data.data.results);
+    }, [data]);
 
-    const opts = {
-        height: "390",
-        width: "100%",
-        playerVars: {
-            // https://developers.google.com/youtube/player_parameters
-            autoplay: 1
-        }
-    };
+    // const opts = {
+    //     height: "390",
+    //     width: "100%",
+    //     playerVars: {
+    //         // https://developers.google.com/youtube/player_parameters
+    //         autoplay: 1
+    //     }
+    // };
 
-    const click = movie => {
-        if (trailerUrl) {
-            setTrailerUrl("");
-        } else {
-            movieTrailer(movie.name || "")
-                .then(url => {
-                    const urlParams = new URLSearchParams(new URL(url).search);
-                    setTrailerUrl(urlParams.get("v"));
-                })
-                .catch(error => {
-                    alert(
-                        "Trailer for the movie is currently unavailable. Try clicking another movie"
-                    );
-                });
-        }
-    };
+    // const click = movie => {
+    //     if (trailerUrl) {
+    //         setTrailerUrl("");
+    //     } else {
+    //         movieTrailer(movie.name || "")
+    //             .then(url => {
+    //                 const urlParams = new URLSearchParams(new URL(url).search);
+    //                 setTrailerUrl(urlParams.get("v"));
+    //             })
+    //             .catch(error => {
+    //                 alert(
+    //                     "Trailer for the movie is currently unavailable. Try clicking another movie"
+    //                 );
+    //             });
+    //     }
+    // };
 
     return (
         <div className="row">
@@ -53,7 +47,7 @@ function Row({ title, url, isLarge }) {
                 {movies.map(movie => (
                     <img
                         key={movie.id}
-                        onClick={() => click(movie)}
+                        // onClick={() => click(movie)}
                         className={`row poster ${isLarge && "row largePoster"}`}
                         src={
                             isLarge
@@ -64,7 +58,7 @@ function Row({ title, url, isLarge }) {
                     />
                 ))}
             </div>
-            {trailerUrl && <Youtube videoId={trailerUrl} opts={opts} />}
+            {/* {trailerUrl && <Youtube videoId={trailerUrl} opts={opts} />} */}
         </div>
     );
 }
