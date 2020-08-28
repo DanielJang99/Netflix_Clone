@@ -27,7 +27,7 @@ function SearchRow({ url }) {
             <div
                 className="grid"
                 style={{
-                    gridTemplateRows: `repeat(${rowNum}, 200px)`
+                    gridTemplateRows: `repeat(${rowNum}, 12.5rem)`
                 }}
             >
                 {movies.map(movie => (

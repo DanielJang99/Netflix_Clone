@@ -6,20 +6,19 @@ $netflix_background: #111;
     display: inline-flex;
     justify-content: space-between;
     width: 100%;
-    padding-right: 500px;
-    padding-top: 30px;
-    height: 40px;
+    padding-right: 31.25em;
+    padding-top: 1.875em;
+    height: 2.5em;
     z-index: 1;
     transition: all 0.3s;
     transition-timing-function: ease-in;
     background: transparent;
 
     .logo {
-        width: 95px;
+        width: 5.9375em;
         object-fit: contain;
         position: fixed;
-        padding-left: 30px;
-        // margin-right: 300px;
+        padding-left: 1.875rem;
     }
     .icon {
         position: fixed;

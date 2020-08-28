@@ -1,11 +1,16 @@
 .row {
     color: white;
+    padding-top: 0.625rem;
+
+    .titles {
+        padding-left: 1.875rem;
+    }
 
     .posters {
         display: flex;
         overflow-y: hidden;
         overflow-x: scroll;
-        padding: 20px;
+        padding: 1.25rem;
         cursor: pointer;
     }
 
@@ -16,9 +21,9 @@
     .poster {
         width: 100%;
         object-fit: contain;
-        max-height: 150px;
+        max-height: 9.375rem;
         transition: transform 400ms;
-        margin-right: 10px;
+        margin-right: 0.625rem;
     }
 
     .poster:hover {
@@ -26,6 +31,6 @@
     }
 
     .largePoster {
-        max-height: 300px;
+        max-height: 18.75rem;
     }
 }

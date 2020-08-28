@@ -35,7 +35,7 @@ function Nav({ showIcon }) {
                 />
             </div>
 
-            <div style={{ paddingRight: "50px" }}>
+            <div style={{ paddingRight: "3.125rem" }}>
                 {clicked || !showIcon ? (
                     <SearchInput />
                 ) : (
