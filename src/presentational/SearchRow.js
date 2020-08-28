@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import axios from "./axios";
-import "./SearchRow.scss";
+import axios from "../axios";
+import "../styles/SearchRow.scss";
 
 const imageURL = "https://image.tmdb.org/t/p/original";
 

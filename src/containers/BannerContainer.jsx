@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
-import requests from "./requests";
-import { LoadMovies } from "./movies";
+import requests from "../requests";
+import { LoadMovies } from "../movies_action";
 import { useSelector, useDispatch } from "react-redux";
-import Banner from "./Banner";
+import Banner from "../presentational/Banner";
 
 function BannerContainer() {
     const { data, loading, error } = useSelector(state => state.TRENDING);

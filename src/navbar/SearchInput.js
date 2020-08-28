@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 
-function SearchContainer() {
+function SearchInput() {
     const [query, setQuery] = useState("");
     const queryRef = useRef();
 
@@ -35,4 +35,4 @@ function SearchContainer() {
     );
 }
 
-export default SearchContainer;
+export default SearchInput;

@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
-import { LoadMovies } from "./movies";
+import { LoadMovies } from "../movies_action";
 import { useSelector, useDispatch } from "react-redux";
-import Row from "./Row";
+import Row from "../presentational/Row";
 
 function RowContainer({ url, title, isLarge, type }) {
     const { data, loading, error } = useSelector(state => state[type]);

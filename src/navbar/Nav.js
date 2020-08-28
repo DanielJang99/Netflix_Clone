@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import "./Nav.scss";
+import "../styles/Nav.scss";
 import SearchIcon from "./SearchIcon";
-import SearchContainer from "./SearchContainer";
+import SearchInput from "./SearchInput";
 
 function Nav({ showIcon }) {
     const [show, handleShow] = useState(false);
@@ -37,7 +37,7 @@ function Nav({ showIcon }) {
 
             <div style={{ paddingRight: "50px" }}>
                 {clicked || !showIcon ? (
-                    <SearchContainer />
+                    <SearchInput />
                 ) : (
                     <div onClick={() => toggle()}>
                         <SearchIcon />

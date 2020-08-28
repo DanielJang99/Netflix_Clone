@@ -123,31 +123,3 @@ export default function movieReducer(state = initialState, action) {
             return state;
     }
 }
-
-// export default function movieReducer(state = initialState, action) {
-//     switch (action.type) {
-//         case GET_MOVIES:
-//             return {
-//                 ...state,
-//                 data: null,
-//                 loading: true,
-//                 error: null
-//             };
-//         case GET_MOVIES_SUCCESS:
-//             return {
-//                 ...state,
-//                 data: action.movies,
-//                 loading: false,
-//                 error: null
-//             };
-//         case GET_MOVIES_FAIL:
-//             return {
-//                 ...state,
-//                 data: null,
-//                 loading: false,
-//                 error: action.error
-//             };
-//         default:
-//             return state;
-//     }
-// }

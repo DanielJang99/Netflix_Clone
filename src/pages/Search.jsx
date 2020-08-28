@@ -1,7 +1,7 @@
 import React from "react";
-import Nav from "./Nav";
+import Nav from "../navbar/Nav";
 import qs from "qs";
-import SearchRow from "./SearchRow";
+import SearchRow from "../presentational/SearchRow";
 
 function Search({ location }) {
     const SearchQuery = qs.parse(location.search, {

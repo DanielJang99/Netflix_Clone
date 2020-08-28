@@ -1,9 +1,9 @@
 import React from "react";
-import RowContainer from "./RowContainer";
-import requests from "./requests";
-import Nav from "./Nav";
-import BannerContainer from "./BannerContainer";
-import "./App.scss";
+import RowContainer from "../containers/RowContainer";
+import requests from "../requests";
+import Nav from "../navbar/Nav";
+import BannerContainer from "../containers/BannerContainer";
+import "../styles/App.scss";
 
 function Home() {
     return (

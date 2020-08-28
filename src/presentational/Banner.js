@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./Banner.scss";
+import "../styles/Banner.scss";
 
 function Banner({ data }) {
     const imageURL = "https://image.tmdb.org/t/p/original";
