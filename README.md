@@ -1,6 +1,6 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
 ### Netflix Clone Project
+
+https://danieljang99.github.io/Netflix_Clone/
 
 A Single-Page Web Applicaiton cloning Netflix, built with React JS, Redux, SCSS, and TMDB API.
 
@@ -15,10 +15,10 @@ This project is currently in development. Users can search for movies with title
 ### `Project Screen Shots`
 
 Screen Shot of the homepage
-<img height="700" src="./images/ScreenShot1.png">
+<img src="./images/ScreenShot1.png">
 
 Screen Shot of the Search page
-<img height="700" src="./images/ScreenShot2.png">
+<img src="./images/ScreenShot2.png">
 
 ### `Reflection`
 
