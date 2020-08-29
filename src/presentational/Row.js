@@ -1,43 +1,21 @@
 import React, { useState, useEffect } from "react";
 import "../styles/Row.scss";
-import Youtube from "react-youtube";
-import movieTrailer from "movie-trailer";
-import { LoadMovies } from "../movies_action";
+import CallYoutube from "../CallYoutube";
 
 const imageURL = "https://image.tmdb.org/t/p/original";
 
 function Row({ data, isLarge, title }) {
     const [movies, setMovies] = useState([]);
-    const [trailerUrl, setTrailerUrl] = useState("");
+    const [movieState, setMovieState] = useState("");
+    const [clicked, setClicked] = useState(false);
 
     useEffect(() => {
         setMovies(data.data.results);
     }, [data]);
 
-    const opts = {
-        height: "390",
-        width: "100%",
-        playerVars: {
-            // https://developers.google.com/youtube/player_parameters
-            autoplay: 1
-        }
-    };
-
-    const click = movie => {
-        if (trailerUrl) {
-            setTrailerUrl("");
-        } else {
-            movieTrailer(movie.name || "")
-                .then(url => {
-                    const urlParams = new URLSearchParams(new URL(url).search);
-                    setTrailerUrl(urlParams.get("v"));
-                })
-                .catch(error => {
-                    alert(
-                        "Trailer for the movie is currently unavailable. Try clicking another movie"
-                    );
-                });
-        }
+    const click = movieTitle => {
+        setMovieState(movieTitle);
+        setClicked(!clicked);
     };
 
     return (
@@ -47,7 +25,7 @@ function Row({ data, isLarge, title }) {
                 {movies.map(movie => (
                     <img
                         key={movie.id}
-                        onClick={() => click(movie)}
+                        onClick={() => click(movie.title || movie.name)}
                         className={`row poster ${isLarge && "row largePoster"}`}
                         src={
                             isLarge
@@ -58,7 +36,7 @@ function Row({ data, isLarge, title }) {
                     />
                 ))}
             </div>
-            {trailerUrl && <Youtube videoId={trailerUrl} opts={opts} />}
+            {movieState && clicked && <CallYoutube movieName={movieState} />}
         </div>
     );
 }
