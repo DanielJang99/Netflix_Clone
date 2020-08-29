@@ -7,8 +7,8 @@ import Search from "./pages/Search";
 const App = () => {
     return (
         <div>
-            <Route path="/" exact component={Home} />
-            <Route path="/search" component={Search} />
+            <Route path="/Netflix_Clone" exact component={Home} />
+            <Route path="/Netflix_Clone/search" component={Search} />
         </div>
     );
 };

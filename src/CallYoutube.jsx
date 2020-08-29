@@ -24,7 +24,7 @@ function CallYoutube({ movieName }) {
             })
             .catch(error => {
                 alert(
-                    "Trailer for the movie is currently unavailable in movie-trailer api. Try clicking another movie"
+                    "Trailer for this movie is currently unavailable in movie-trailer api. Try clicking another movie"
                 );
             });
     }

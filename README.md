@@ -1,68 +1,43 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+### Netflix Clone Project
 
-In the project directory, you can run:
+A Single-Page Web Applicaiton cloning Netflix, built with React JS, Redux, SCSS, and TMDB API.
 
-### `yarn start`
+React framework으로 넷플릭스을 클론한 SPA 프론젝트 입니다.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### `Project Status`
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+This project is currently in development. Users can search for movies with titles and watch the trailers availabe on Youtube. Functionality to store movies selected by the user ("My List") and improvement in UI are in progress.
 
-### `yarn test`
+이 프로젝트는 아직 진행중입니다. 현재로선 유저는 영화를 검색할 수 있고 선택한 영화의 예고편을 유튜브를 통해 볼 수 있습니다. 유저가 고른 영화를 DB에 저장하거나 ("내가 찜한 콘텐츠") 전반적인 UI 개선을 목표로 현재 개발하고 있습니다.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### `Project Screen Shots`
 
-### `yarn build`
+Screen Shot of the homepage
+<img height="700" src="./images/ScreenShot1.png">
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Screen Shot of the Search page
+<img height="700" src="./images/ScreenShot2.png">
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+### `Reflection`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+I started this project to get a better grasp of web development; Project goals included using technologies (specifically, React JS) learned up until this point and training myself with git command lines by cloning a webpage that I am very much familiar with.
 
-### `yarn eject`
+One of the biggest challenges I faced was refactoring asynchronous API calls using Redux. This led me to spend a couple of days studying the mechanisms behind Redux and Redux middlewares, and I was able to pull it off using Redux-thunk. I also had to spend reasonable amount of time adjusting the component styling to replicate the actual Netflix as precisely as possible.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+At the end of the day, the technologies I used for this project include React (CRA), React-Router, SCSS, Redux, Redux-Thunk, Axios, react-youtube, and movie-trailer API.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+웹 개발을 입문하고 React를 더욱 이해할수 있도록 이 클론 프로젝트를 시작하였는데, 진행할 수록 지금까지 공부한 React와 Git을 활용한 개발과정을 체험할 수 있어서 좋았습니다.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+제일 어려웠던 부분은 아무래도 리덕스를 활용해서 비동기적인 작업을 처리하는 코드를 refactoring 할때 였는데, 이를 계기로 리덕스와 리덕스 미들웨어, 특히 Redux-thunk를 다시 공부하는 계기가 되었습니다. 이와 더불어 실제 넷플릭스와 유사하도록 컴포넌트 스타일링에 많은 시간과 고민을 투자하였습니다.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+결론적으론 이 프로젝트에 활용된 기술들은 React (CRA), React-Router, SCSS, Redux, Redux-Thunk, Axios, react-youtube, 그리고 movie-trailer API 입니다.
 
-## Learn More
+### `References`
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+https://www.youtube.com/watch?v=XtMThy8QKqU
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+This tutorial was used as a reference for Netflix styling and using the TMDB database.
 
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+넷플릭스 스타일링과 TBDB 활용 방법은 이 튜토리얼을 참고했습니다.

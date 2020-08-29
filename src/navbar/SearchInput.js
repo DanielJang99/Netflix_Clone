@@ -13,12 +13,12 @@ function SearchInput() {
 
     const handleEscape = event => {
         if (event.keyCode === 27) {
-            history.push("/");
+            history.push("/Netflix_Clone");
         }
     };
 
     useEffect(() => {
-        history.push(`/search?query=${query}`);
+        history.push(`/Netflix_Clone/search?query=${query}`);
     }, [history, query]);
 
     return (
