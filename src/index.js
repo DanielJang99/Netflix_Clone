@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
-import { BrowserRouter } from "react-router-dom";
+import { HashRouter } from "react-router-dom";
 import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
 import movieReducer from "./movies_action";
@@ -16,11 +16,11 @@ const store = createStore(
 );
 
 ReactDOM.render(
-    <BrowserRouter>
+    <HashRouter basename={"/Netflix_Clone"}>
         <Provider store={store}>
             <App />
         </Provider>
-    </BrowserRouter>,
+    </HashRouter>,
     document.getElementById("root")
 );
 
