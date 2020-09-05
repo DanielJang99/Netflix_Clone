@@ -13,24 +13,51 @@ $netflix_background: #111;
     transition: all 0.3s;
     transition-timing-function: ease-in;
     background: transparent;
-
-    .logo {
-        width: 5.9375em;
-        object-fit: contain;
-        position: fixed;
-        padding-left: 1.875rem;
-    }
-    .icon {
-        position: fixed;
-    }
-
-    .icon:hover {
-        cursor: pointer;
-        transform: scale(1.2);
-        transition: transform 200ms;
-    }
 }
 
 .black {
     background-color: $netflix_background;
+}
+
+.logo {
+    width: 5.9375em;
+    object-fit: contain;
+    position: fixed;
+    padding-left: 1.875rem;
+}
+
+.icon {
+    position: fixed;
+}
+
+.icon:hover {
+    cursor: pointer;
+    transform: scale(1.2);
+    transition: transform 200ms;
+}
+
+.SearchDiv {
+    display: inline-flex;
+    height: 1.875rem;
+    width: 12rem;
+}
+
+.SearchInput {
+    // border-radius: 15px;
+    border: 0;
+    outline: 0;
+    width: 0;
+    transition: width 0.3s linear;
+    opacity: 0;
+    margin-right: 0.3125rem;
+}
+
+.SearchInput::placeholder {
+    text-align: center;
+}
+
+.clicked {
+    opacity: 1;
+    width: 300px;
+    transition: width 0.3s linear;
 }

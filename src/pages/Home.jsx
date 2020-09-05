@@ -1,14 +1,12 @@
 import React from "react";
 import RowContainer from "../containers/RowContainer";
 import requests from "../requests";
-import Nav from "../navbar/Nav";
 import BannerContainer from "../containers/BannerContainer";
 import "../styles/App.scss";
 
 function Home() {
     return (
         <div className="app">
-            <Nav showIcon={true} />
             <BannerContainer />
             <RowContainer
                 title="Netflix Originals"

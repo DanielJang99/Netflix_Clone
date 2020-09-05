@@ -1,20 +1,25 @@
 import React, { useEffect } from "react";
-import { LoadMovies } from "../movies_action";
+import { LoadMovies } from "../modules/movies_action";
 import { useSelector, useDispatch } from "react-redux";
 import Row from "../presentational/Row";
+// import Loading from "../presentational/Loading";
 
 function RowContainer({ url, title, isLarge, type }) {
-    const { data, loading, error } = useSelector(state => state[type]);
+    const { data, loading, error } = useSelector(
+        state => state.movieReducer[type]
+    );
     const dispatch = useDispatch();
 
     useEffect(() => {
+        if (data) return;
         dispatch(LoadMovies(url, type));
-    }, [dispatch, url, type]);
+    }, [dispatch, url, type, data]);
     if (!data) {
         return null;
     }
     if (loading) {
-        console.log("loading");
+        // return <Loading />;
+        return <div>Loading...</div>;
     }
     if (error) {
         console.log(error);

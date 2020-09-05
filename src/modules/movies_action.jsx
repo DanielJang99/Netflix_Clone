@@ -1,4 +1,4 @@
-import axios from "./axios";
+import axios from "../axios";
 
 const GET_TRENDING = "GET_TRENDING";
 const GET_TRENDING_SUCCESS = "GET_TRENDING_SUCCESS";

@@ -1,21 +1,25 @@
 import React, { useEffect } from "react";
 import requests from "../requests";
-import { LoadMovies } from "../movies_action";
+import { LoadMovies } from "../modules/movies_action";
 import { useSelector, useDispatch } from "react-redux";
 import Banner from "../presentational/Banner";
+// import Loading from "../presentational/Loading";
 
 function BannerContainer() {
-    const { data, loading, error } = useSelector(state => state.TRENDING);
+    const { data, loading, error } = useSelector(
+        state => state.movieReducer.TRENDING
+    );
     const dispatch = useDispatch();
 
     useEffect(() => {
+        if (data) return;
         dispatch(LoadMovies(requests.fetchTrending, "TRENDING"));
-    }, [dispatch]);
+    }, [dispatch, data]);
     if (!data) {
         return null;
     }
     if (loading) {
-        console.log("loading");
+        return <div>Loading...</div>;
     }
 
     if (error) {

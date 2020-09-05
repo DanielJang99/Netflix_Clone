@@ -6,7 +6,7 @@ function CallYoutube({ movieName }) {
     const [trailerUrl, setTrailerUrl] = useState("");
 
     const opts = {
-        height: "390",
+        height: "400",
         width: "100%",
         playerVars: {
             // https://developers.google.com/youtube/player_parameters

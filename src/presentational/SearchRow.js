@@ -24,7 +24,7 @@ function SearchRow({ url }) {
         fetchData();
     }, [url]);
 
-    const click = (movieTitle, i) => {
+    const click = movieTitle => {
         setMovieState(movieTitle);
         setClicked(!clicked);
     };

@@ -3,9 +3,9 @@ import React from "react";
 function SearchIcon() {
     return (
         <>
-            <svg style={{ width: "24", height: "24" }}>
+            <svg className={"SearchIcon"}>
                 <path
-                    className="nav icon"
+                    className="icon"
                     stroke="white"
                     fill="transparent"
                     strokeWidth="3"
