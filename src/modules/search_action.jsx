@@ -6,15 +6,16 @@ const SEARCH_USER_INPUT = "SEARCH_USER_INPUT";
 const CLICKED = "CLICKED";
 const UNCLICKED = "UNCLICKED";
 
+// handle search input from user
 export const searchUserInput = query => ({
     type: SEARCH_USER_INPUT,
     query
 });
 
+// handle whether searchbar icon is clicked or not
 export const btnClicked = () => ({
     type: CLICKED
 });
-
 export const btnUnclicked = () => ({
     type: UNCLICKED
 });

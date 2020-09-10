@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import { Route, Switch, Redirect } from "react-router-dom";
 import Search from "./pages/Search";
 import Nav from "./navbar/Nav";
+// import { BrowserRouter } from "react-router-dom";
 
 const App = () => {
     return (

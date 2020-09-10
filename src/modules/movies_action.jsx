@@ -1,5 +1,6 @@
 import axios from "../axios";
 
+// store for each row of movie genres displayed at homepage
 const GET_TRENDING = "GET_TRENDING";
 const GET_TRENDING_SUCCESS = "GET_TRENDING_SUCCESS";
 const GET_TRENDING_FAIL = "GET_TRENDING_FAIL";

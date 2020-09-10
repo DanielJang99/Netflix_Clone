@@ -6,11 +6,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { btnClicked, btnUnclicked } from "../modules/search_action";
 
 function Nav() {
-    const [ScrolledNav, handleScrolledNav] = useState(false);
     const dispatch = useDispatch();
     const clicked = useSelector(state => state.searchReducer.clicked);
 
     const toggle = () => {
+        // handle click for search bar icon with redux
         if (clicked) {
             dispatch(btnUnclicked());
         } else {
@@ -18,6 +18,8 @@ function Nav() {
         }
     };
 
+    // turn Nav to dark if the page is scrolled over 100
+    const [ScrolledNav, handleScrolledNav] = useState(false);
     useEffect(() => {
         const showBanner = () => {
             if (window.scrollY > 100) {
@@ -33,7 +35,8 @@ function Nav() {
     }, []);
 
     return (
-        <div className={`nav ${(ScrolledNav || clicked) && "black"}`}>
+        <div className={`nav ${(ScrolledNav || clicked) && "dark"}`}>
+            {/* Netflix logo button */}
             <div>
                 <img
                     className={"logo"}
@@ -43,7 +46,10 @@ function Nav() {
             </div>
 
             <div className={"SearchDiv"}>
+                {/* input tag only visible once search bar icon is clicked */}
                 <SearchInput clicked={clicked} />
+
+                {/* search bar icon */}
                 <div onClick={() => toggle()}>
                     <SearchIcon />
                 </div>

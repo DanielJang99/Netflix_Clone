@@ -10,14 +10,17 @@ const SearchInput = React.memo(({ clicked }) => {
     let history = useHistory();
 
     if (queryString) {
+        // if user has typed input
         history.push(`/Netflix_Clone/search?query=${queryString}`);
     }
 
     if (!clicked) {
+        // go back to homepage if searchbar is clicked again
         history.push("/Netflix_Clone");
     }
 
     const handleChange = e => {
+        // send input to store
         dispatch(searchUserInput(e.target.value));
     };
 
@@ -25,6 +28,7 @@ const SearchInput = React.memo(({ clicked }) => {
         queryRef.current.focus();
     });
     const handleEscape = event => {
+        // go back to homepage by pressing esc
         if (event.keyCode === 27) {
             history.push("/Netflix_Clone");
         }

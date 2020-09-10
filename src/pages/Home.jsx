@@ -9,15 +9,15 @@ function Home() {
         <div className="app">
             <BannerContainer />
             <RowContainer
-                title="Netflix Originals"
-                url={requests.fetchNetflixOriginals}
-                isLarge
-                type="NORIGINALS"
-            />
-            <RowContainer
                 title="Trending Now"
                 url={requests.fetchTrending}
                 type="TRENDING"
+                isLarge
+            />
+            <RowContainer
+                title="Netflix Originals"
+                url={requests.fetchNetflixOriginals}
+                type="NORIGINALS"
             />
             <RowContainer
                 title="Top Rated"
@@ -34,6 +34,7 @@ function Home() {
                 url={requests.fetchAdventure}
                 type="ADVENTURE"
             />
+            <div style={{ height: "6.25rem" }}></div>
         </div>
     );
 }

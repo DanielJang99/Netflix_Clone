@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import { LoadMovies } from "../modules/movies_action";
 import { useSelector, useDispatch } from "react-redux";
 import Row from "../presentational/Row";
-// import Loading from "../presentational/Loading";
 
 function RowContainer({ url, title, isLarge, type }) {
     const { data, loading, error } = useSelector(
@@ -18,7 +17,6 @@ function RowContainer({ url, title, isLarge, type }) {
         return null;
     }
     if (loading) {
-        // return <Loading />;
         return <div>Loading...</div>;
     }
     if (error) {

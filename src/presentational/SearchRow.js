@@ -1,68 +1,64 @@
-import React, { useState, useEffect } from "react";
-import axios from "../axios";
+import React, { useState } from "react";
 import "../styles/SearchRow.scss";
 import CallYoutube from "../CallYoutube";
 
 const imageURL = "https://image.tmdb.org/t/p/original";
 
-function SearchRow({ url }) {
-    const [movies, setMovies] = useState([]);
-    const [rowNum, setRowNum] = useState(0);
-
+function SearchRow({ movies, rowNum, url }) {
     const [movieState, setMovieState] = useState("");
     const [clicked, setClicked] = useState(false);
+    const [clickedMovieID, setClickedMovieID] = useState(0);
 
-    useEffect(() => {
-        async function fetchData() {
-            const request = await axios.get(url);
-            setMovies(request.data.results);
-            request.data.total_results >= 20
-                ? setRowNum(5)
-                : setRowNum(Math.floor(request.data.total_results / 4) + 1);
-            return request;
-        }
-        fetchData();
-    }, [url]);
-
-    const click = movieTitle => {
+    const click = (movieTitle, number) => {
+        setClickedMovieID(Math.floor(number / 5)); //divide movie ID by 5 to find its trailer row
         setMovieState(movieTitle);
         setClicked(!clicked);
     };
 
-    while (
-        url !== "/search/movie?api_key=47223dc77b02e3169fa9047461b75c36&query="
-    ) {
-        return (
-            <>
-                {movieState && clicked && (
-                    <CallYoutube movieName={movieState} />
-                )}
+    return (
+        <div className="grid">
+            {movies.map((movie, i) => (
+                <>
+                    <div>
+                        <img
+                            onClick={() => click(movie.title || movie.name, i)}
+                            key={i}
+                            src={`${imageURL}${movie.backdrop_path}`}
+                            alt={movie.title}
+                            className="poster"
+                        />
+                    </div>
 
-                <div
-                    className="grid"
-                    style={{
-                        gridTemplateRows: `repeat(${rowNum}, 12.5rem)`
-                    }}
-                >
-                    {movies.map((movie, i) => (
-                        <div>
-                            <img
-                                onClick={() =>
-                                    click(movie.title || movie.name, i)
-                                }
-                                key={i}
-                                src={`${imageURL}${movie.backdrop_path}`}
-                                alt={movie.title}
-                                className="poster"
-                                style={{ color: "white" }}
-                            />
-                        </div>
-                    ))}
-                </div>
-            </>
-        );
-    }
-    return null;
+                    {/* for every row of searched movie posters, create another row for trailers (trailer row) to be displayed once clicked */}
+                    {(i + 1) % 5 === 0 && (
+                        <>
+                            {/* first cell of trailer row - check the ID of the clicked movie to locate its trailer row */}
+                            {Math.floor(i / 5) === clickedMovieID ? (
+                                <div
+                                    style={{
+                                        width: "525%"
+                                    }}
+                                >
+                                    {/* Call movie trailer once its poster is clicked and has valid movie title */}
+                                    {movieState && clicked && (
+                                        <CallYoutube movieName={movieState} />
+                                    )}
+                                </div>
+                            ) : (
+                                <div />
+                            )}
+
+                            {/*  empty divs as placeholders*/}
+                            <div />
+                            <div />
+                            <div />
+                            <div />
+                        </>
+                    )}
+                </>
+            ))}
+        </div>
+    );
 }
 
 export default SearchRow;
