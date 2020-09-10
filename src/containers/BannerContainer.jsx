@@ -3,7 +3,6 @@ import requests from "../requests";
 import { LoadMovies } from "../modules/movies_action";
 import { useSelector, useDispatch } from "react-redux";
 import Banner from "../presentational/Banner";
-// import Loading from "../presentational/Loading";
 
 function BannerContainer() {
     const { data, loading, error } = useSelector(

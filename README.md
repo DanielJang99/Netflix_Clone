@@ -8,17 +8,23 @@ React framework으로 넷플릭스을 클론한 SPA 프로젝트 입니다.
 
 ### `Project Status`
 
-This project is currently in development. Users can search for movies with titles and watch the trailers availabe on Youtube. Functionality to store movies selected by the user ("My List") and improvement in UI are in progress.
+This project is currently in development. Users can search for movies and watch the trailers availabe on Youtube by clicking their posters. Functionality to store movies selected by the user ("My List") and improvement in UI are in progress.
 
 이 프로젝트는 아직 진행 중입니다. 현재로선 유저는 영화를 검색할 수 있고 선택한 영화의 예고편을 유튜브를 통해 볼 수 있습니다. 유저가 고른 영화를 DB에 저장하거나 ("내가 찜한 콘텐츠") 전반적인 UI 개선을 목표로 현재 개발하고 있습니다.
 
 ### `Project Screen Shots`
 
-Screen Shot of the homepage
-<img src="./images/ScreenShot1.png">
+Screen Shot of the homepage 1
+<img src="./images/1.png">
+
+Screen Shot of the homepage 2
+<img src="./images/2.png">
+
+Screen Shot of the homepage 3
+<img src="./images/3.png">
 
 Screen Shot of the Search page
-<img src="./images/ScreenShot2.png">
+<img src="./images/4.png">
 
 ### `Reflection`
 
@@ -26,7 +32,7 @@ I started this project to get a better grasp of web development; Project goals i
 
 One of the biggest challenges I faced was refactoring asynchronous API calls using Redux. This led me to spend a couple of days studying the mechanisms behind Redux and Redux middlewares, and I was able to pull it off using Redux-thunk. I also had to spend reasonable amount of time adjusting the component styling to replicate the actual Netflix as precisely as possible.
 
-At the end of the day, the technologies I used for this project include React (CRA), React-Router, SCSS, Redux, Redux-Thunk, Axios, react-youtube, and movie-trailer API.
+At the end of the day, the technologies I used for this project include React (CRA), React-Router, SCSS, Redux, Redux-Thunk, Axios, Swiper Js, react-youtube, and movie-trailer API.
 
 웹 개발에 입문하고 React를 더욱 이해할 수 있도록 이 클론 프로젝트를 시작하였는데, 진행할수록 지금까지 공부한 React와 Git을 활용한 개발과정을 체험할 수 있어서 좋았습니다.
 
