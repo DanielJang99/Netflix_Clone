@@ -15,6 +15,9 @@ $netflix_background: #111;
     background: transparent;
 }
 
+.navDiv {
+    padding-left: 1.875rem;
+}
 .dark {
     background-color: $netflix_background;
 }
@@ -23,7 +26,13 @@ $netflix_background: #111;
     width: 5.9375em;
     object-fit: contain;
     position: fixed;
-    padding-left: 1.875rem;
+    border-right: 100px;
+}
+
+.navMenu {
+    color: white;
+    font-size: 15px;
+    padding: 1rem;
 }
 
 .icon {

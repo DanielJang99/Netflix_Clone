@@ -7,7 +7,7 @@ import { btnClicked, btnUnclicked } from "../modules/search_action";
 
 function Nav() {
     const dispatch = useDispatch();
-    const clicked = useSelector(state => state.searchReducer.clicked);
+    const clicked = useSelector((state) => state.searchReducer.clicked);
 
     const toggle = () => {
         // handle click for search bar icon with redux
@@ -37,12 +37,17 @@ function Nav() {
     return (
         <div className={`nav ${(ScrolledNav || clicked) && "dark"}`}>
             {/* Netflix logo button */}
-            <div>
+            <div className={"navDiv"}>
                 <img
                     className={"logo"}
                     src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg"
                     alt="Netflix Logo"
                 />
+                <span style={{ paddingLeft: "7.5rem" }}>
+                    <b className={"navMenu"}>Movies</b>
+                    <b className={"navMenu"}>TV Shows</b>
+                    <b className={"navMenu"}>My List</b>
+                </span>
             </div>
 
             <div className={"SearchDiv"}>
