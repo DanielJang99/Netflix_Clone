@@ -2,24 +2,23 @@ import React, { useRef, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { searchUserInput } from "../modules/search_action";
+import { btnClicked } from "../modules/search_action";
 
 const SearchInput = React.memo(({ clicked }) => {
-    const queryString = useSelector(state => state.searchReducer.query);
+    const queryString = useSelector((state) => state.searchReducer.query);
     const dispatch = useDispatch();
     const queryRef = useRef();
     let history = useHistory();
+    const current_page = useSelector(
+        (state) => state.searchReducer.current_page
+    );
 
-    if (queryString) {
+    if (queryString && clicked) {
         // if user has typed input
         history.push(`/Netflix_Clone/search?query=${queryString}`);
     }
 
-    if (!clicked) {
-        // go back to homepage if searchbar is clicked again
-        history.push("/Netflix_Clone");
-    }
-
-    const handleChange = e => {
+    const handleChange = (e) => {
         // send input to store
         dispatch(searchUserInput(e.target.value));
     };
@@ -27,10 +26,15 @@ const SearchInput = React.memo(({ clicked }) => {
     useEffect(() => {
         queryRef.current.focus();
     });
-    const handleEscape = event => {
-        // go back to homepage by pressing esc
+    const handleEscape = (event) => {
         if (event.keyCode === 27) {
-            history.push("/Netflix_Clone");
+            const page = current_page.home
+                ? "/Netflix_Clone/home"
+                : current_page.movie
+                ? "/Netflix_Clone/movies"
+                : "/Netflix_Clone/tvshows";
+            history.push(page);
+            dispatch(btnClicked());
         }
     };
 

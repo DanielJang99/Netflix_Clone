@@ -23,7 +23,7 @@ function Banner({ data }) {
                 style={{
                     backgroundSize: "cover",
                     backgroundImage: `url(${imageURL}${movie.backdrop_path})`,
-                    backgroundPosition: "center center"
+                    backgroundPosition: "center center",
                 }}
             >
                 <div className="banner content">

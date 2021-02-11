@@ -1,19 +1,18 @@
 import React, { useEffect } from "react";
-import requests from "../requests";
 import { LoadMovies } from "../modules/movies_action";
 import { useSelector, useDispatch } from "react-redux";
 import Banner from "../presentational/Banner";
 
-function BannerContainer() {
+function BannerContainer({ type, url }) {
     const { data, loading, error } = useSelector(
-        state => state.movieReducer.TRENDING
+        (state) => state.movieReducer[type]
     );
     const dispatch = useDispatch();
 
     useEffect(() => {
         if (data) return;
-        dispatch(LoadMovies(requests.fetchTrending, "TRENDING"));
-    }, [dispatch, data]);
+        dispatch(LoadMovies(url, type));
+    }, [dispatch, data, url, type]);
     if (!data) {
         return null;
     }

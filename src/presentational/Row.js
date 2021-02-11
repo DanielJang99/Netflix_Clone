@@ -20,7 +20,7 @@ function Row({ data, isLarge, title }) {
     const [clickedMovieTitle, setClickedMovieTitle] = useState("");
     const [clicked, setClicked] = useState(false);
 
-    const click = movieTitle => {
+    const click = (movieTitle) => {
         setClickedMovieTitle(movieTitle);
         setClicked(!clicked);
     };
@@ -35,18 +35,17 @@ function Row({ data, isLarge, title }) {
                 spaceBetween={5}
                 navigation={{
                     nextEl: ".swiper-button-next",
-                    prevEl: ".swiper-button-prev"
+                    prevEl: ".swiper-button-prev",
                 }}
                 className="row swiper"
                 slidesPerGroup={5}
                 speed={650}
                 slidesOffsetBefore={50}
             >
-                {movies.map(movie => (
-                    <SwiperSlide>
+                {movies.map((movie) => (
+                    <SwiperSlide key={movie.id}>
                         {/* call different poster size depending on isLarge value */}
                         <img
-                            key={movie.id}
                             onClick={() => click(movie.title || movie.name)}
                             className={`row poster`}
                             src={

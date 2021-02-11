@@ -3,19 +3,19 @@ import "../styles/Nav.scss";
 import SearchIcon from "./SearchIcon";
 import SearchInput from "./SearchInput";
 import { useDispatch, useSelector } from "react-redux";
-import { btnClicked, btnUnclicked } from "../modules/search_action";
+import { btnClicked } from "../modules/search_action";
+import { useHistory } from "react-router-dom";
 
 function Nav() {
     const dispatch = useDispatch();
+    let history = useHistory();
     const clicked = useSelector((state) => state.searchReducer.clicked);
+    const current_page = useSelector(
+        (state) => state.searchReducer.current_page
+    );
 
     const toggle = () => {
-        // handle click for search bar icon with redux
-        if (clicked) {
-            dispatch(btnUnclicked());
-        } else {
-            dispatch(btnClicked());
-        }
+        dispatch(btnClicked());
     };
 
     // turn Nav to dark if the page is scrolled over 100
@@ -42,11 +42,34 @@ function Nav() {
                     className={"logo"}
                     src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg"
                     alt="Netflix Logo"
+                    onClick={() => history.push("/Netflix_Clone/home")}
+                    style={{ cursor: "pointer" }}
                 />
                 <span style={{ paddingLeft: "7.5rem" }}>
-                    <b className={"navMenu"}>Movies</b>
-                    <b className={"navMenu"}>TV Shows</b>
-                    <b className={"navMenu"}>My List</b>
+                    <b
+                        className={`navMenu ${
+                            current_page.home && "currentPage"
+                        } `}
+                        onClick={() => history.push("/Netflix_Clone/home")}
+                    >
+                        Home
+                    </b>
+                    <b
+                        className={`navMenu ${
+                            current_page.movie && "currentPage"
+                        }`}
+                        onClick={() => history.push("/Netflix_Clone/movies")}
+                    >
+                        Movies
+                    </b>
+                    <b
+                        className={`navMenu ${
+                            current_page.tvshow && "currentPage"
+                        }`}
+                        onClick={() => history.push("/Netflix_Clone/tvshows")}
+                    >
+                        TV Shows
+                    </b>
                 </span>
             </div>
 

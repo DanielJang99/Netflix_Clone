@@ -1,32 +1,12 @@
 import axios from "../axios";
+import { genre_list } from "../requests";
 
-// store for each row of movie genres displayed at homepage
-const GET_TRENDING = "GET_TRENDING";
-const GET_TRENDING_SUCCESS = "GET_TRENDING_SUCCESS";
-const GET_TRENDING_FAIL = "GET_TRENDING_FAIL";
-
-const GET_TOPRATED = "GET_TOPRATED";
-const GET_TOPRATED_SUCCESS = "GET_TOPRATED_SUCCESS";
-const GET_TOPRATED_FAIL = "GET_TOPRATED_FAIL";
-
-const GET_COMEDY = "GET_COMEDY";
-const GET_COMEDY_SUCCESS = "GET_COMEDY_SUCCESS";
-const GET_COMEDY_FAIL = "GET_COMEDY_FAIL";
-
-const GET_ADVENTURE = "GET_ADVENTURE";
-const GET_ADVENTURE_SUCCESS = "GET_ADVENTURE_SUCCESS";
-const GET_ADVENTURE_FAIL = "GET_ADVENTURE_FAIL";
-
-const GET_NORIGINALS = "GET_NORIGINALS";
-const GET_NORIGINALS_SUCCESS = "GET_NORIGINALS_SUCCESS";
-const GET_NORIGINALS_FAIL = "GET_NORIGINALS_FAIL";
-
-const fetchMovies = async RequestType => {
+const fetchMovies = async (RequestType) => {
     const movies = await axios.get(RequestType);
     return movies;
 };
 
-export const LoadMovies = (RequestURL, type) => async dispatch => {
+export const LoadMovies = (RequestURL, type) => async (dispatch) => {
     dispatch({ type: `GET_${type}` });
     try {
         const movies = await fetchMovies(RequestURL);
@@ -36,36 +16,8 @@ export const LoadMovies = (RequestURL, type) => async dispatch => {
     }
 };
 
-const initialState = {
-    TRENDING: {
-        data: null,
-        loading: false,
-        error: null
-    },
-    TOPRATED: {
-        data: null,
-        loading: false,
-        error: null
-    },
-    COMEDY: {
-        data: null,
-        loading: false,
-        error: null
-    },
-    ADVENTURE: {
-        data: null,
-        loading: false,
-        error: null
-    },
-    NORIGINALS: {
-        data: null,
-        loading: false,
-        error: null
-    }
-};
-
 export const handleAsync = (type, key) => {
-    const [SUCCESS, ERROR] = [`${type}_SUCCESS`, `${type}_ERROR`];
+    const [SUCCESS, FAIL] = [`${type}_SUCCESS`, `${type}_FAIL`];
     return (state, action) => {
         switch (action.type) {
             case type:
@@ -73,24 +25,24 @@ export const handleAsync = (type, key) => {
                     ...state,
                     [key]: {
                         ...state,
-                        loading: true
-                    }
+                        loading: true,
+                    },
                 };
             case SUCCESS:
                 return {
                     ...state,
                     [key]: {
                         ...state,
-                        data: action.movies
-                    }
+                        data: action.movies,
+                    },
                 };
-            case ERROR:
+            case FAIL:
                 return {
                     ...state,
                     [key]: {
                         ...state,
-                        error: action.error
-                    }
+                        error: action.error,
+                    },
                 };
             default:
                 return state;
@@ -98,29 +50,34 @@ export const handleAsync = (type, key) => {
     };
 };
 
-export default function movieReducer(state = initialState, action) {
-    switch (action.type) {
-        case GET_TRENDING:
-        case GET_TRENDING_SUCCESS:
-        case GET_TRENDING_FAIL:
-            return handleAsync(GET_TRENDING, "TRENDING")(state, action);
-        case GET_TOPRATED:
-        case GET_TOPRATED_SUCCESS:
-        case GET_TOPRATED_FAIL:
-            return handleAsync(GET_TOPRATED, "TOPRATED")(state, action);
-        case GET_COMEDY:
-        case GET_COMEDY_SUCCESS:
-        case GET_COMEDY_FAIL:
-            return handleAsync(GET_COMEDY, "COMEDY")(state, action);
-        case GET_ADVENTURE:
-        case GET_ADVENTURE_SUCCESS:
-        case GET_ADVENTURE_FAIL:
-            return handleAsync(GET_ADVENTURE, "ADVENTURE")(state, action);
-        case GET_NORIGINALS:
-        case GET_NORIGINALS_SUCCESS:
-        case GET_NORIGINALS_FAIL:
-            return handleAsync(GET_NORIGINALS, "NORIGINALS")(state, action);
-        default:
+const initial_data_state = {
+    data: null,
+    loading: false,
+    error: null,
+};
+
+const initialState = {};
+const handlers = {};
+genre_list.forEach((genre) => {
+    initialState[genre] = initial_data_state;
+    const [GET_GENRE, SUCCESS, FAIL] = [
+        `GET_${genre}`,
+        `GET_${genre}_SUCCESS`,
+        `GET_${genre}_FAIL`,
+    ];
+    handlers[GET_GENRE] = handleAsync(GET_GENRE, genre);
+    handlers[SUCCESS] = handleAsync(GET_GENRE, genre);
+    handlers[FAIL] = handleAsync(GET_GENRE, genre);
+});
+
+function createReducer(initialState, handlers) {
+    return function reducer(state = initialState, action) {
+        if (handlers.hasOwnProperty(action.type)) {
+            return handlers[action.type](state, action);
+        } else {
             return state;
-    }
+        }
+    };
 }
+
+export const movieReducer = createReducer(initialState, handlers);
