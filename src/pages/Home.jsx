@@ -35,17 +35,6 @@ function Home() {
                 url={requests.fetchTopRated}
                 type="TOPRATED"
             />
-            {/* <RowContainer
-                title="Comedy"
-                url={requests.fetchComedy}
-                type="COMEDY"
-            />
-            <RowContainer
-                title="Adventure"
-                url={requests.fetchAdventure}
-                type="ADVENTURE"
-            /> */}
-            <div style={{ height: "6.25rem" }}></div>
         </div>
     );
 }

@@ -16,33 +16,26 @@ export const LoadMovies = (RequestURL, type) => async (dispatch) => {
     }
 };
 
-export const handleAsync = (type, key) => {
+export const handleAsync = (type, key, keepData = false) => {
     const [SUCCESS, FAIL] = [`${type}_SUCCESS`, `${type}_FAIL`];
     return (state, action) => {
         switch (action.type) {
             case type:
                 return {
                     ...state,
-                    [key]: {
-                        ...state,
-                        loading: true,
-                    },
+                    [key]: reducerUtils.loading(
+                        keepData ? state[key].data : null
+                    ),
                 };
             case SUCCESS:
                 return {
                     ...state,
-                    [key]: {
-                        ...state,
-                        data: action.movies,
-                    },
+                    [key]: reducerUtils.success(action.movies),
                 };
             case FAIL:
                 return {
                     ...state,
-                    [key]: {
-                        ...state,
-                        error: action.error,
-                    },
+                    [key]: reducerUtils.error(action.error),
                 };
             default:
                 return state;
@@ -50,24 +43,47 @@ export const handleAsync = (type, key) => {
     };
 };
 
-const initial_data_state = {
-    data: null,
-    loading: false,
-    error: null,
+// const initial_data_state = {
+//     data: null,
+//     loading: false,
+//     error: null,
+// };
+
+const reducerUtils = {
+    initial: (initialData = null) => ({
+        loading: false,
+        data: initialData,
+        error: null,
+    }),
+    loading: (prevState = null) => ({
+        loading: true,
+        data: prevState,
+        error: null,
+    }),
+    success: (payload) => ({
+        loading: false,
+        data: payload,
+        error: null,
+    }),
+    error: (error) => ({
+        loading: false,
+        data: null,
+        error: error,
+    }),
 };
 
 const initialState = {};
 const handlers = {};
 genre_list.forEach((genre) => {
-    initialState[genre] = initial_data_state;
+    initialState[genre] = reducerUtils.initial();
     const [GET_GENRE, SUCCESS, FAIL] = [
         `GET_${genre}`,
         `GET_${genre}_SUCCESS`,
         `GET_${genre}_FAIL`,
     ];
-    handlers[GET_GENRE] = handleAsync(GET_GENRE, genre);
-    handlers[SUCCESS] = handleAsync(GET_GENRE, genre);
-    handlers[FAIL] = handleAsync(GET_GENRE, genre);
+    handlers[GET_GENRE] = handleAsync(GET_GENRE, genre, true);
+    handlers[SUCCESS] = handleAsync(GET_GENRE, genre, true);
+    handlers[FAIL] = handleAsync(GET_GENRE, genre, true);
 });
 
 function createReducer(initialState, handlers) {

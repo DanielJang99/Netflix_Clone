@@ -4,9 +4,7 @@ import { Route, Switch, Redirect } from "react-router-dom";
 import Search from "./pages/Search";
 import Movie from "./pages/Movie";
 import TvShow from "./pages/TvShow";
-// import ErrorPage from "./pages/ErrorPage";
 import Nav from "./navbar/Nav";
-// import { BrowserRouter } from "react-router-dom";
 
 const App = () => {
     return (
@@ -18,8 +16,6 @@ const App = () => {
                 <Route path="/Netflix_Clone/movies" exact component={Movie} />
                 <Route path="/Netflix_Clone/tvshows" exact component={TvShow} />
                 <Redirect from="/" to="/Netflix_Clone/home" />
-
-                {/* <Route component={ErrorPage} /> */}
             </Switch>
         </div>
     );
