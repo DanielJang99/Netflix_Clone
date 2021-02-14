@@ -18,10 +18,10 @@ Screen Shot of the homepage 1
 <img src="./images/1.png">
 
 Screen Shot of the homepage 2
-<img src="./images/2.png">
-
-Screen Shot of the homepage 3
 <img src="./images/3.png">
+
+Screen Shot of the moviepage
+<img src="./images/2.png">
 
 Screen Shot of the Search page
 <img src="./images/4.png">
