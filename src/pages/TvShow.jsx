@@ -39,12 +39,6 @@ function TvShow() {
                 type="ROMANCE_TV"
             />
             <RowContainer
-                title="Action TV Series"
-                url={requests.fetchActionTV}
-                type="ACTION_TV"
-                isLarge
-            />
-            <RowContainer
                 title="Documentary TV Series"
                 url={requests.fetchDocumentaryTV}
                 type="DOCUMENTARY_TV"

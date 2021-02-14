@@ -13,8 +13,9 @@ function Row({ data, isLarge, title }) {
     // store movie data to be displayed in row
     const [movies, setMovies] = useState([]);
     useEffect(() => {
+        console.log(title, "row js");
         setMovies(data.data.results);
-    }, [data]);
+    }, [data, title]);
 
     // track click and get the name of the movie clicked
     const [clickedMovieTitle, setClickedMovieTitle] = useState("");

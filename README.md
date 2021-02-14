@@ -1,6 +1,6 @@
 ## Netflix Clone Project
 
-http://netflix-clone-bucket-hsj.s3-website.ap-northeast-2.amazonaws.com/Netflix_Clone
+[Netflix Clone](https://danieljang99.github.io/Netflix_Clone)
 
 A Single-Page Web Applicaiton cloning Netflix, built with React JS, Redux, SCSS, and TMDB API.
 
