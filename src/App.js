@@ -14,7 +14,12 @@ const App = () => {
             <Switch>
                 <Suspense
                     fallback={
-                        <div style={{ height: "1500px", color: "black" }}></div>
+                        <div
+                            style={{
+                                height: "1500px",
+                                backgroundColor: "black",
+                            }}
+                        ></div>
                     }
                 >
                     <Route path="/Netflix_Clone/home" exact component={Home} />
